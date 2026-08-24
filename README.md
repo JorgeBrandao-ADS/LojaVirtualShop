@@ -3,12 +3,12 @@
 Participantes:
 Aline Oliveira da Silva,<br>
 Julius Rocha Lemos, <br>
-Jorge Brandão dos Santos
+Jorge Brandão dos Santos <br>
 
 Ultiliza:
-React
-Vite
-Fakestore API
-Javascript
+React <br>
+Vite <br>
+Fakestore API <br>
+Javascript <br>
 
 

@@ -164,18 +164,15 @@ body {
   background: transparent;
 }
 
-.acoes-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
 
 .header-button {
-  background: transparent;
+  background: #e2e6eb; 
+  padding: .5rem;
   border: none;
   cursor: pointer;
   font-size: 20px;
   position: relative;
+  border-radius: 3rem;
 }
 
 .header-button span {
@@ -198,14 +195,80 @@ body {
   justify-content: center;
 }
 
-.logout {
-  border: none;
-  background: #111827;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
+
+
+.Menu-Principal {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
+
+.Menu-Principal a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.Menu-Principal a:hover {
+    color: #007bff; 
+}
+
+.Dropdown {
+    position: relative; 
+    padding: 10px 0; 
+}
+
+.dropdown-conteudo {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    list-style: none;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08); 
+    z-index: 1;
+}
+
+
+.Dropdown:hover .dropdown-conteudo {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.dropdown-conteudo a {
+    display: block;
+    padding: 12px 20px;
+    color: #555555;
+    font-size: 0.95rem;
+}
+
+.dropdown-conteudo a:hover {
+    background-color: #f4f6f8; 
+    color: #007bff;
+}
+
+
+.btn-logout a {
+    color: #dc3545; 
+    font-weight: 600;
+}
+
+.btn-logout a:hover {
+    background-color: #fff0f0;
+    color: #c82333;
+}
+
 
 /* =========================
    BANNER

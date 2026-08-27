@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import Banner from "./components/Banner";
 import Categorias from "./components/Categorias";
 import Vitrine from "./components/Vitrine";
-import Carrinho from "./components/Carrinho";
+import CarrinhoLateral from "./components/CarrinhoLateral";
 import Beneficios from "./components/Beneficios";
 import Footer from "./components/Footer";
 
@@ -399,7 +399,7 @@ function App() {
 
       {mostrarCarrinho && (
 
-        <Carrinho
+        <CarrinhoLateral
 
           carrinho={carrinho}
 

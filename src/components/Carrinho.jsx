@@ -7,7 +7,7 @@ function Carrinho({
   
     const total = carrinho.reduce(
       (soma, item) =>
-        soma + item.preco * item.quantidade,
+        soma + item.price * item.quantidade,
       0
     );
   
@@ -78,18 +78,18 @@ function Carrinho({
                   >
   
                     <img
-                      src={item.imagem}
-                      alt={item.nome}
+                      src={item.image}
+                      alt={item.title}
                     />
   
                     <div className="item-info">
   
                       <h4>
-                        {item.nome}
+                        {item.title}
                       </h4>
   
                       <span>
-                        R$ {item.preco.toFixed(2)}
+                        R$ {item.price.toFixed(2)}
                       </span>
   
                       <div className="quantidade">

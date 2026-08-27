@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import produtos from "./data/produtos";
-
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import Banner from "./components/Banner";
@@ -10,7 +8,6 @@ import Vitrine from "./components/Vitrine";
 import Carrinho from "./components/Carrinho";
 import Beneficios from "./components/Beneficios";
 import Footer from "./components/Footer";
-import ItemProduto from "./components/ItemProduto";
 
 function App() {
 
@@ -18,11 +15,19 @@ function App() {
   // ESTADO DO LOGIN
   // ==========================================
 
-  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [token, setToken] =
+    useState(localStorage.getItem("token") || null);
 
-  const fazerLogin = (tokenObtido) => {
+  function fazerLogin(tokenObtido) {
     setToken(tokenObtido);
   }
+
+
+  // ==========================================
+  // ESTADO DOS PRODUTOS
+  // ==========================================
+
+  const [produtos, setProdutos] = useState([]);
 
 
   // ==========================================
@@ -32,6 +37,7 @@ function App() {
   const [carrinho, setCarrinho] =
     useState([]);
 
+
   // ==========================================
   // ESTADO DA BUSCA
   // ==========================================
@@ -39,12 +45,14 @@ function App() {
   const [busca, setBusca] =
     useState("");
 
+
   // ==========================================
   // ESTADO DA CATEGORIA
   // ==========================================
 
   const [categoria, setCategoria] =
     useState("Todos");
+
 
   // ==========================================
   // ABRIR/FECHAR CARRINHO
@@ -55,7 +63,63 @@ function App() {
 
 
   // ==========================================
-  // USEEFFECT - CARREGAR CARRINHO
+  // ESTADO DE CARREGAMENTO DOS PRODUTOS
+  // ==========================================
+
+  const [carregandoProdutos, setCarregandoProdutos] =
+    useState(true);
+
+
+  // ==========================================
+  // ESTADO DE ERRO DOS PRODUTOS
+  // ==========================================
+
+  const [erroProdutos, setErroProdutos] =
+    useState("");
+
+
+  // ==========================================
+  // BUSCAR PRODUTOS DA FAKESTORE API
+  // ==========================================
+
+  useEffect(() => {
+
+    fetch("https://fakestoreapi.com/products")
+
+      .then(response => {
+
+        if (!response.ok) {
+          throw new Error("Erro ao buscar produtos");
+        }
+
+        return response.json();
+
+      })
+
+      .then(dados => {
+
+        setProdutos(dados);
+        setCarregandoProdutos(false);
+
+      })
+
+      .catch(erro => {
+
+        console.log("Erro ao buscar produtos:", erro);
+
+        setErroProdutos(
+          "Não foi possível carregar os produtos."
+        );
+
+        setCarregandoProdutos(false);
+
+      });
+
+  }, []);
+
+
+  // ==========================================
+  // CARREGAR CARRINHO DO LOCALSTORAGE
   // ==========================================
 
   useEffect(() => {
@@ -73,8 +137,9 @@ function App() {
 
   }, []);
 
+
   // ==========================================
-  // USEEFFECT - SALVAR CARRINHO
+  // SALVAR CARRINHO NO LOCALSTORAGE
   // ==========================================
 
   useEffect(() => {
@@ -86,8 +151,9 @@ function App() {
 
   }, [carrinho]);
 
+
   // ==========================================
-  // ADICIONAR PRODUTO
+  // ADICIONAR PRODUTO AO CARRINHO
   // ==========================================
 
   function adicionarCarrinho(produto) {
@@ -134,14 +200,12 @@ function App() {
 
   }
 
+
   // ==========================================
   // ALTERAR QUANTIDADE
   // ==========================================
 
-  function alterarQuantidade(
-    id,
-    valor
-  ) {
+  function alterarQuantidade(id, valor) {
 
     setCarrinho(
 
@@ -173,6 +237,7 @@ function App() {
 
   }
 
+
   // ==========================================
   // REMOVER PRODUTO
   // ==========================================
@@ -189,19 +254,19 @@ function App() {
 
   }
 
+
   // ==========================================
   // LOGOUT
   // ==========================================
 
   function logout() {
 
-    localStorage.removeItem(
-      "token"
-    );
+    localStorage.removeItem("token");
 
     setToken(null);
 
   }
+
 
   // ==========================================
   // FILTRAR PRODUTOS
@@ -211,7 +276,7 @@ function App() {
     produtos.filter((produto) => {
 
       const correspondeBusca =
-        produto.nome
+        produto.title
           .toLowerCase()
           .includes(
             busca.toLowerCase()
@@ -219,7 +284,7 @@ function App() {
 
       const correspondeCategoria =
         categoria === "Todos" ||
-        produto.categoria === categoria;
+        produto.category === categoria;
 
       return (
         correspondeBusca &&
@@ -228,8 +293,9 @@ function App() {
 
     });
 
+
   // ==========================================
-  // QUANTIDADE DO CARRINHO
+  // QUANTIDADE TOTAL DO CARRINHO
   // ==========================================
 
   const quantidadeCarrinho =
@@ -238,6 +304,7 @@ function App() {
         total + item.quantidade,
       0
     );
+
 
   // ==========================================
   // SE NÃO ESTIVER LOGADO
@@ -248,15 +315,13 @@ function App() {
     return (
 
       <Login
-        // onLogin={() =>
-        //   setToken("some-token")
-        // }
         loginEnviado={fazerLogin}
       />
 
     );
 
   }
+
 
   // ==========================================
   // LOJA
@@ -284,7 +349,9 @@ function App() {
 
       />
 
+
       <Banner />
+
 
       <Categorias
 
@@ -294,19 +361,39 @@ function App() {
 
       />
 
-      <Vitrine
 
-        produtos={produtosFiltrados}
+      {carregandoProdutos ? (
 
-        adicionarCarrinho={
-          adicionarCarrinho
-        }
+        <div className="carregando">
+          <h2>Carregando produtos...</h2>
+        </div>
 
-      />
+      ) : erroProdutos ? (
+
+        <div className="erro-produtos">
+          <h2>{erroProdutos}</h2>
+        </div>
+
+      ) : (
+
+        <Vitrine
+
+          produtos={produtosFiltrados}
+
+          adicionarCarrinho={
+            adicionarCarrinho
+          }
+
+        />
+
+      )}
+
 
       <Beneficios />
 
+
       <Footer />
+
 
       {mostrarCarrinho && (
 
@@ -333,6 +420,7 @@ function App() {
     </>
 
   );
+
 }
 
 export default App;

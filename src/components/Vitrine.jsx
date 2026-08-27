@@ -1,16 +1,13 @@
-import ProdutoCard from "./ProdutoCard";
+import ItemProduto from "./ItemProduto";
 
-function ListaProdutos({
-  produtos,
-  adicionarCarrinho
-}) {
+function Vitrine({ produtos, adicionarCarrinho }) {
 
   return (
 
     <main
       className="produtos-container"
       id="produtos"
-    >
+      >
 
       <div className="titulo-produtos">
 
@@ -26,27 +23,27 @@ function ListaProdutos({
 
         </div>
 
-        <p>
-          {produtos.length} produtos encontrados
-        </p>
+          <p>
+            {produtos.length} produtos encontrados
+          </p>
 
       </div>
+
 
       <div className="produtos-grid">
 
         {produtos.map((produto) => (
 
-          <ProdutoCard
+          <ItemProduto
             key={produto.id}
             produto={produto}
-            adicionarCarrinho={
-              adicionarCarrinho
-            }
+            adicionarCarrinho={adicionarCarrinho}
           />
 
         ))}
 
       </div>
+
 
       {produtos.length === 0 && (
 
@@ -61,7 +58,7 @@ function ListaProdutos({
           </h3>
 
           <p>
-            Tente pesquisar por outro termo.
+            Tente selecionar outra categoria.
           </p>
 
         </div>
@@ -69,7 +66,9 @@ function ListaProdutos({
       )}
 
     </main>
+
   );
+
 }
 
-export default ListaProdutos;
+export default Vitrine;

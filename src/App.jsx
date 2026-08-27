@@ -6,10 +6,11 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Categorias from "./components/Categorias";
-import ListaProdutos from "./components/ListaProdutos";
+import Vitrine from "./components/Vitrine";
 import Carrinho from "./components/Carrinho";
 import Beneficios from "./components/Beneficios";
 import Footer from "./components/Footer";
+import ItemProduto from "./components/ItemProduto";
 
 function App() {
 
@@ -293,7 +294,7 @@ function App() {
 
       />
 
-      <ListaProdutos
+      <Vitrine
 
         produtos={produtosFiltrados}
 

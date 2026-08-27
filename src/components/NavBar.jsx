@@ -2,7 +2,7 @@ import "../App.css"
 import { Categorias } from "../Services/Api";
 import { useEffect, useState } from "react";
 
-export default function NavBar({busca, setBusca, quantidadeCarrinho, abrirCarrinho,logout}){
+export default function NavBar({busca, setBusca, quantidadeCarrinho, abrirCarrinho,logout, setCategoria}){
     
     const [listaCategorias, setListaCategorias] = useState([]);
 
@@ -19,7 +19,7 @@ export default function NavBar({busca, setBusca, quantidadeCarrinho, abrirCarrin
 
     return(
        <nav className="header">
-            <div className="logo">
+            <div className="logo" onClick={() => {setCategoria("Todos"); setBusca(""); }}>
                 🛍️ VirtualShop
             </div>
 
@@ -32,11 +32,16 @@ export default function NavBar({busca, setBusca, quantidadeCarrinho, abrirCarrin
 
             <ul className="Menu-Principal">
                 <li className="Dropdown">
-                    <a href="#">Categorias ▾</a> 
+                    <a href="#" onClick={(e) => {e.preventDefault(); setCategoria("Todos"); }}>
+                        Categorias ▾
+                    </a> 
                     <ul className="dropdown-conteudo">
                         {listaCategorias.map((categoria, index) => (
                             <li key={index}>
-                                <a href="#">{categoria}</a>
+                                <a href="#" 
+                                    onClick={(e) => {e.preventDefault(); setCategoria(categoria)}}>
+                                    {categoria}
+                                </a>
                             </li>
                         ))}
                     </ul>

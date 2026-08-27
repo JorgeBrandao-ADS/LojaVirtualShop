@@ -137,6 +137,7 @@ body {
   font-weight: bold;
   color: #2563eb;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .barra-pesquisa {

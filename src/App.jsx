@@ -347,6 +347,8 @@ function App() {
 
         logout={logout}
 
+        setCategoria={setCategoria}
+
       />
 
 

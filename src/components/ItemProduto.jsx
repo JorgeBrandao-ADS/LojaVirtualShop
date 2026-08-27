@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Produtos } from "../Services/Api";
 
 export default function ItemProduto({
     produto,
     adicionarCarrinho
 }) {
 
-  console.log(produto);
+  
 
   const [favorito, setFavorito] = useState(false);
 

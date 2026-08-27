@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import produtos from "./data/produtos";
 
 import Login from "./components/Login";
-import Header from "./components/Header";
+import NavBar from "./components/NavBar";
 import Banner from "./components/Banner";
 import Categorias from "./components/Categorias";
 import Vitrine from "./components/Vitrine";
@@ -266,7 +266,7 @@ function App() {
 
     <>
 
-      <Header
+      <NavBar
 
         busca={busca}
 

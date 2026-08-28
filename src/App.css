@@ -279,19 +279,17 @@ body {
   margin: 30px auto;
   width: 88%;
   max-width: 1400px;
-  min-height: 320px;
+  height: 320px;
   border-radius: 20px;
-  background: linear-gradient(
-    120deg,
-    #111827,
-    #1e40af
-  );
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px 80px;
+
+  background-image: url("./assets/bannersite.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
   overflow: hidden;
+  position: relative;
+  cursor: pointer;
 }
 
 .banner-small {

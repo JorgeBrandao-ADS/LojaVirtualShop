@@ -1,40 +1,18 @@
 function Banner() {
-    function irParaProdutos() {
+  function irParaProdutos() {
+    document.getElementById('produtos').scrollIntoView({
+      behavior: 'smooth',
+    });
+  }
 
-        Document
-            .getElementById("produtos")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-    }
-    return (
-        <section className="banner">
-            <div className="banner-content">
-                <span className="banner-small">
-                    OFERTAS ESPECIAIS
-                </span>
-                <h1>
-                    Tecnologia para
-                    <br />
-                    transformar seu dia
-                </h1>
-
-                <p>
-                    Encontre os melhores produtos
-                    com preços incríveis.
-                </p>
-
-                <button onClick={irParaProdutos}>
-                    Comprar agora →
-                </button>
-
-
-            </div>
-            <div className = "banner-emoji">
-                💻
-            </div>
-        </section>
-    )
+  return (
+    <section
+      className="banner"
+      onClick={irParaProdutos}
+      role="button"
+      tabIndex="0"
+    ></section>
+  );
 }
 
 export default Banner;

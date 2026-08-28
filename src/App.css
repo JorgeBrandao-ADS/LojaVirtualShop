@@ -843,3 +843,59 @@ footer small {
     gap: 15px;
   }
 }
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+.newsletter {
+  background: #f9fafb;
+  padding: 40px 8%;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.newsletter h2 {
+  font-size: 24px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.newsletter p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.newsletter input {
+  padding: 12px 15px;
+  width: 300px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.newsletter button {
+  padding: 12px 20px;
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #374151;
+}
+
+.newsletter-mensagem {
+  color: #16a34a;
+  font-size: 13px;
+  margin-top: 15px;
+}
+

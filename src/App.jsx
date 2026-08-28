@@ -6,8 +6,7 @@ import Banner from "./components/Banner";
 import Categorias from "./components/Categorias";
 import Vitrine from "./components/Vitrine";
 import CarrinhoLateral from "./components/CarrinhoLateral";
-import Beneficios from "./components/Beneficios";
-import Footer from "./components/Footer";
+import RodapeNewsletter from "./components/RodapeNewsletter";
 
 function App() {
 
@@ -391,10 +390,7 @@ function App() {
       )}
 
 
-      <Beneficios />
-
-
-      <Footer />
+      <RodapeNewsletter />
 
 
       {mostrarCarrinho && (

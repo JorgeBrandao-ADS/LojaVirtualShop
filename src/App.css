@@ -855,3 +855,81 @@ footer small {
     gap: 15px;
   }
 }
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+.newsletter {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.newsletter h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.newsletter p {
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.newsletter form {
+  display: flex;
+  max-width: 550px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.newsletter button {
+  padding: 14px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #1d4ed8;
+}
+
+.newsletter-mensagem {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.footer-conteudo {
+  text-align: center;
+}
+
+.footer-links a {
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #60a5fa;
+}
+
+@media (max-width: 600px) {
+  .newsletter form {
+    flex-direction: column;
+  }
+
+  .newsletter button {
+    width: 100%;
+  }
+}
